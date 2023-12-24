@@ -1,17 +1,15 @@
 import React from 'react';
 import 'rsuite/dist/styles/rsuite-default.css';
-import {Button,Progress,Input} from 'rsuite';
+import './styles/main.css'
+import './styles/utility.css'
+import './styles/utility_colors.css'
+import './styles/override.css'
 function App() {
   return (
-    <div className ='text-center'>
-    <h1>ahello world</h1>
-    <Input/>
-    <Button color ='red'>Hello World</Button>
-      
-  <Progress.Line vertical percent = {80}/>
-
+  <div className = 'text-center'>
+  <h1>Welcome to the Chat App </h1>
+  <p>A Progressive Chat App for Neophystes</p>
     </div>
-    
   );
 }
 
