@@ -3,7 +3,7 @@ function App() {
   return (
     <div>
       <header> 
-      hello world 
+      hello world my name is kinu ganjhu
       </header>
     </div>
   );
