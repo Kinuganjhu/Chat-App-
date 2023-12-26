@@ -11,7 +11,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 function App() {
   return (
-    <div className='text-center'>
+    <div>
       <Switch>
         <PublicRoute path='/signin'>
           <SignIn />
