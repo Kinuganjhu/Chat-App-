@@ -3,8 +3,8 @@
   "rules": {
     "profiles":{
       "$user_id":{
-        ".read" : "$user_id===auth.id",
-        ".write" : "$user_id===auth.id",
+        ".read" : "$user_id===auth.uid",
+        ".write" : "$user_id===auth.uid",
         }
       },
     ".read": false,

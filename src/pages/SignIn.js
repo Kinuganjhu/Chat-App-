@@ -8,7 +8,6 @@ import {
 import { Container, Grid, Row, Panel, Col, Button, Icon, Alert } from 'rsuite';
 import { ref, serverTimestamp, set } from 'firebase/database';
 import { auth, database } from '../misc/firebase';
-
 const SignIn = () => {
   const signInWithProvider = async provider => {
     try {
@@ -35,7 +34,6 @@ const SignIn = () => {
   const onGoogleSignIn = () => {
     signInWithProvider(new GoogleAuthProvider());
   };
-
   return (
     <Container>
       <Grid className="mt-page">
@@ -62,6 +60,6 @@ const SignIn = () => {
       </Grid>
     </Container>
   );
-};
-
+  
+} 
 export default SignIn;
