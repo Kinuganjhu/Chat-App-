@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'; // Import PropTypes
 import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
 import { ref, set } from 'firebase/database'; // Correct import for ref and set functions
-
+import ProviderBlock from './ProviderBlock';
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
 
@@ -28,6 +28,7 @@ const Dashboard = ({ onSignOut }) => {
       </Drawer.Header>
       <Drawer.Body>
         <h3>Hey, {profile.name}</h3>
+        <ProviderBlock/>
         <Divider />
 
         <EditableInput
