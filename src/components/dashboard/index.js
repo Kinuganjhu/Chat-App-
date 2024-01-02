@@ -1,13 +1,24 @@
 import React from 'react';
-import { Button, Drawer, Divider } from 'rsuite';
+import { Button, Drawer, Divider, Alert } from 'rsuite';
+import { database } from '../../misc/firebase';
 import PropTypes from 'prop-types'; // Import PropTypes
 import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
-const onSave = (newData)=>{
-  
-}
+import { ref, set } from 'firebase/database'; // Correct import for ref and set functions
+
 const Dashboard = ({ onSignOut }) => {
   const { profile } = useProfile();
+
+  const onSave = async newData => {
+    const userNicknameRef = ref(database, `/profiles/${profile.uid}/name`);
+    try {
+      await set(userNicknameRef, newData);
+      Alert.success('Nickname has been updated', 4000);
+    } catch (err) {
+      Alert.error(err.message, 4000);
+    }
+  };
+
   return (
     <>
       <Drawer.Header>
@@ -18,11 +29,13 @@ const Dashboard = ({ onSignOut }) => {
       <Drawer.Body>
         <h3>Hey, {profile.name}</h3>
         <Divider />
-      
+
         <EditableInput
-        name ='Nickname' initialValue ={profile.name} onSave ={onSave}
-        
-        label ={<h6 className ="mb-2">Nickname</h6>}/>
+          name='Nickname'
+          initialValue={profile.name}
+          onSave={onSave}
+          label={<h6 className="mb-2">Nickname</h6>}
+        />
       </Drawer.Body>
       <Drawer.Footer>
         {/* Ensure the onSignOut function is used */}
