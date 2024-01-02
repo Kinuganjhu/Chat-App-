@@ -4,6 +4,7 @@ import { database } from '../../misc/firebase';
 import PropTypes from 'prop-types'; // Import PropTypes
 import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
+import AvatarUploadBtn from './AvatarUploadBtn';
 import { ref, set } from 'firebase/database'; // Correct import for ref and set functions
 import ProviderBlock from './ProviderBlock';
 const Dashboard = ({ onSignOut }) => {
@@ -37,6 +38,7 @@ const Dashboard = ({ onSignOut }) => {
           onSave={onSave}
           label={<h6 className="mb-2">Nickname</h6>}
         />
+        <AvatarUploadBtn/>
       </Drawer.Body>
       <Drawer.Footer>
         {/* Ensure the onSignOut function is used */}
