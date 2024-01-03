@@ -1,9 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
+import { Nav, Loader } from 'rsuite';
 import RoomItem from './RoomItem';
-import { Nav } from 'rsuite';
+import { useRooms } from '../../context/rooms.context';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const ChatRoomList = ({ aboveElHeight }) => {
+  const rooms = useRooms();
+  const location = useLocation();
+
   return (
     <Nav
       appearance="subtle"
@@ -13,16 +18,29 @@ const ChatRoomList = ({ aboveElHeight }) => {
       style={{
         height: `calc(100% - ${aboveElHeight}px)`,
       }}
+      activeKey={location.pathname}
     >
-      <Nav.Item>
-        <RoomItem />
-      </Nav.Item>
+      {!rooms && (
+        <Loader center vertical content="Loading" speed="slow" size="md" />
+      )}
+      {rooms &&
+        rooms.length > 0 &&
+        rooms.map(room => (
+          <Nav.Item
+            componentClass={Link}
+            to={`/chat/${room.id}`}
+            key={room.id}
+            eventKey={`/chat/${room.id}`}
+          >
+            <RoomItem room={room} />
+          </Nav.Item>
+        ))}
     </Nav>
   );
-}
+};
 
 ChatRoomList.propTypes = {
-  aboveElHeight: PropTypes.number.isRequired,
+  aboveElHeight: PropTypes.number.isRequired, // Add prop type validation for aboveElHeight prop
 };
 
 export default ChatRoomList;
