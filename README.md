@@ -20,7 +20,7 @@
 
   <h2>Installation</h2>
   <ol>
-    <li>Clone the repository: <code>git clone https://github.com/your-username/your-repository.git</code></li>
+    <li>Clone the repository: <code>git clone https://github.com/Kinuganjhu/Chat-App-.git</code></li>
     <li>Install dependencies: <code>npm install</code></li>
     <li>Set up Firebase: Add your Firebase configuration details in the <code>config/firebase.js</code> file.</li>
     <li>Start the application: <code>npm start</code></li>
