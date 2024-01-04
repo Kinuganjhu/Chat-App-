@@ -1,15 +1,17 @@
 import React from 'react';
 import { useTimeAgo } from 'next-timeago';
+import PropTypes from 'prop-types'; // Import PropTypes
 
-const RoomItem = () => {
+const RoomItem = ({ room }) => {
   const { TimeAgo } = useTimeAgo();
+  const { name, createdAt } = room;
 
   return (
     <div>
       <div className="d-flex justify-content-between align-items-center">
-        <h3 className="text-disappear">Room Name</h3>
+        <h3 className="text-disappear">{name}</h3>
         <TimeAgo
-          datetime={new Date()}
+          datetime={new Date(createdAt)}
           className="font-normal text-black-45"
         />
       </div>
@@ -18,6 +20,14 @@ const RoomItem = () => {
       </div>
     </div>
   );
-}
+};
+
+RoomItem.propTypes = {
+  room: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    createdAt: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]).isRequired,
+    // Add more specific prop types if available for other room properties
+  }).isRequired,
+};
 
 export default RoomItem;
